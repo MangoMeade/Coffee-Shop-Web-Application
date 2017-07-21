@@ -17,31 +17,37 @@
             font-family: Arial, Helvetica, sans-serif;
             font-size: 12px;
         }
+
         h1 {
-            text-align:center;
+            text-align: center;
         }
+
         /*Table Elements*/
         td {
-            vertical-align:top;
+            vertical-align: top;
         }
+
         fieldset {
             text-align: left;
             padding: 5px;
             background-color: #eee;
         }
+
         legend {
             background-color: #f93;
             border: 1px solid #f00;
             padding: 5px;
-            margin-bottom:5px;
+            margin-bottom: 5px;
         }
+
         section {
             width: 550px;
             margin: 20px auto;
         }
+
         /* Centers validation text */
         #validation {
-            text-align:center;
+            text-align: center;
         }
     </style>
 </head>
@@ -51,7 +57,8 @@
 </p>
 <header><h1>Register</h1></header>
 <form:form method="POST" action="/registerUser"
-           oninput="x.value=parseInt(range.value)+parseInt(0)">
+           oninput="x.value=parseInt(range.value)+parseInt(0)"
+           onSubmit = "return checkForm(this)">
     <section>
         <h4>Please complete the following information about yourself below.</h4>
         <fieldset>
@@ -61,24 +68,31 @@
             <table>
                 <tr>
                     <td>Name:</td>
-                    <td><input type="text" name="name" id="name" size="30" tabindex="1" placeholder="Full Name" autofocus required></td>
+                    <td><input type="text" name="name" id="name" size="30" tabindex="1" placeholder="Full Name"
+                               autofocus required></td>
                 </tr>
                 <tr>
                     <td>Email:</td>
-                    <td><input type="email" name="email" id="email" size="30" tabindex="2" placeholder="Email Address" required></td>
+                    <td><input type="email" name="email" id="email" size="30" tabindex="2" placeholder="Email Address"
+                               required></td>
                 </tr>
                 <tr>
                     <td>Phone Number:</td>
-                    <td><input type="tel" name="phone" id="phone" size="30" tabindex="3" placeholder="Phone Number" required></td>
+                    <td><input type="tel" name="phone" id="phone" size="30" tabindex="3" placeholder="Phone Number"
+                               required></td>
                 </tr>
                 <tr>
                     <td>I am:</td>
-                    <td><input type="radio" name="sex" id="CustSexM" value="male" tabindex="4">Male&nbsp;<input type="radio" name="sex" id="CustSexF" value="female" tabindex="5">Female
+                    <td><input type="radio" name="sex" id="CustSexM" value="male" tabindex="4">Male&nbsp;<input
+                            type="radio" name="sex" id="CustSexF" value="female" tabindex="5">Female
                     </td>
                 </tr>
                 <tr>
                     <td>Age:</td>
-                    <td><input type="range" name="age" id="range" value="0" min="0" max="100" step="1" tabindex="6"><output name="x" for="range"></output> Years Old</td>
+                    <td><input type="range" name="age" id="range" value="0" min="0" max="100" step="1" tabindex="6">
+                        <output name="x" for="range"></output>
+                        Years Old
+                    </td>
                 </tr>
             </table>
         </fieldset>
@@ -87,7 +101,7 @@
     <section>
         <h4>Let us know about your favorite types of coffee. Check all that apply.</h4>
         <fieldset>
-            <legend><strong>Step 2: Favorite Genre(s)</strong></legend>
+            <legend><strong>Step 2: Favorite Coffee(s)</strong></legend>
             <br>
             <label>Dark Roast:</label>
             <input name="coffeePrefs" type="checkbox" value="dark" tabindex="7">
@@ -105,19 +119,59 @@
     </section>
 
     <section>
+        <fieldset>
+            <legend>
+                <strong>Step 3: Create a password</strong>
+            </legend>
+            <table>
+                <tr>
+                    <td>Enter Password:</td>
+                    <td><input type="password" name="pw" id="pw" size="30" tabindex="13" placeholder="Password" autofocus
+                               required></td>
+                </tr>
+                <tr>
+                    <td>Re-enter Password:</td>
+                    <td><input type="password" name="pw_veri" id="pw_veri" size="30" tabindex="14"
+                               placeholder="Re-enter Password" required></td>
+                </tr>
+            </table>
+        </fieldset>
+    </section>
+
+    <section>
         <h4>Submit or Reset the form below.</h4>
         <fieldset>
-            <legend><strong>Step 3: Send It!</strong></legend>
+            <legend><strong>Step 4: Send It!</strong></legend>
             <br>
-            <input id="submit" type="submit" value="Complete Survey" tabindex="13">&nbsp;
-            <input id="reset" type="reset" value="Reset" tabindex="14">
+            <input id="submit" type="submit" value="Complete Survey" tabindex="15">&nbsp;
+            <input id="reset" type="reset" value="Reset" tabindex="16">
         </fieldset>
     </section>
 </form:form>
 <footer>
     <p id="validation">
-        <a href="http://validator.w3.org/check?uri=referer" title="HTML5 Validation">HTML5 Validation</a>
+        <a href="/login" title="login">Already registered? Login here.</a>
     </p>
 </footer>
+
+<script type="text/javascript">
+
+    function checkForm(form)
+    {
+        if(form.pw.value != "" && form.pw_veri.value == form.pw.value) {
+            if(form.pw.value.length < 6) {
+                alert("Error: Password must contain at least six characters!");
+                form.pw.focus();
+                return false;
+            }
+        } else {
+            alert("Error: Your passwords do not match!");
+            form.pw.focus();
+            return false;
+        }
+        return true;
+    }
+
+</script>
 </body>
 </html>

@@ -14,8 +14,17 @@ public class Person {
     private String email;
     private String sex;
     private String[] coffeePrefs;
+    private String pw;
 
     public Person() {
+    }
+
+    public String getPw() {
+        return pw;
+    }
+
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 
     public String[] getCoffeePrefs() {
@@ -75,6 +84,7 @@ public class Person {
                 ", email='" + email + '\'' +
                 ", sex='" + sex + '\'' +
                 ", coffeePrefs=" + Arrays.toString(coffeePrefs) +
+                ", pw='" + pw + '\'' +
                 '}';
     }
 }
