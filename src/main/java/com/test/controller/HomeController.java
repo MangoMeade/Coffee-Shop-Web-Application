@@ -32,6 +32,7 @@ public class HomeController {
         model.addAttribute("email", person.getEmail());
         model.addAttribute("phone", person.getPhone());
         model.addAttribute("sex", person.getSex());
+        model.addAttribute("coffeePrefs", person.getCoffeePrefs());
         System.out.println(person);
 
         return new ModelAndView("profile", "name", person.getName());

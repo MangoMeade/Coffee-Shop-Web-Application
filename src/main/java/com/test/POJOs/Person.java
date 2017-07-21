@@ -1,5 +1,7 @@
 package com.test.POJOs;
 
+import java.util.Arrays;
+
 /*
 Aaron Board
 
@@ -11,8 +13,17 @@ public class Person {
     private long phone;
     private String email;
     private String sex;
+    private String[] coffeePrefs;
 
     public Person() {
+    }
+
+    public String[] getCoffeePrefs() {
+        return coffeePrefs;
+    }
+
+    public void setCoffeePrefs(String[] coffeePrefs) {
+        this.coffeePrefs = coffeePrefs;
     }
 
     public String getSex() {
@@ -63,6 +74,7 @@ public class Person {
                 ", phone=" + phone +
                 ", email='" + email + '\'' +
                 ", sex='" + sex + '\'' +
+                ", coffeePrefs=" + Arrays.toString(coffeePrefs) +
                 '}';
     }
 }

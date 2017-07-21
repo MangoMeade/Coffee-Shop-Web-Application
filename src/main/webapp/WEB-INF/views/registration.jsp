@@ -85,12 +85,32 @@
     </section>
 
     <section>
+        <h4>Let us know about your favorite types of coffee. Check all that apply.</h4>
+        <fieldset>
+            <legend><strong>Step 2: Favorite Genre(s)</strong></legend>
+            <br>
+            <label>Dark Roast:</label>
+            <input name="coffeePrefs" type="checkbox" value="dark" tabindex="7">
+            <label>Light Roast:</label>
+            <input name="coffeePrefs" type="checkbox" value="light" tabindex="8">
+            <label>Mocha:</label>
+            <input name="coffeePrefs" type="checkbox" value="mocha" tabindex="9">
+            <label>Cappuccino:</label>
+            <input name="coffeePrefs" type="checkbox" value="capp" tabindex="10">
+            <label>Cold Brew:</label>
+            <input name="coffeePrefs" type="checkbox" value="cold" tabindex="11">
+            <label>Other:</label>
+            <input name="coffeePrefs" type="checkbox" value="other" tabindex="12">
+        </fieldset>
+    </section>
+
+    <section>
         <h4>Submit or Reset the form below.</h4>
         <fieldset>
-            <legend><strong>Step 2: Send It!</strong></legend>
+            <legend><strong>Step 3: Send It!</strong></legend>
             <br>
-            <input id="submit" type="submit" value="Complete Survey" tabindex="7">&nbsp;
-            <input id="reset" type="reset" value="Reset" tabindex="8">
+            <input id="submit" type="submit" value="Complete Survey" tabindex="13">&nbsp;
+            <input id="reset" type="reset" value="Reset" tabindex="14">
         </fieldset>
     </section>
 </form:form>
