@@ -1,6 +1,7 @@
 package com.test.controller;
 
 import com.test.POJOs.Person;
+import com.test.POJOs.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,22 +23,39 @@ public class HomeController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
-        return new ModelAndView("registration", "command", new Person());
+        return new ModelAndView("registration", "command", new User());
     }
 
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    public ModelAndView registerUser(Person person, Model model) {
-        model.addAttribute("name", person.getName());
-        model.addAttribute("age", person.getAge());
-        model.addAttribute("email", person.getEmail());
-        model.addAttribute("phone", person.getPhone());
-        model.addAttribute("sex", person.getSex());
-        model.addAttribute("coffeePrefs", person.getCoffeePrefs());
-        model.addAttribute("pw", person.getPw());
-        System.out.println(person);
+    public ModelAndView registerUser(User user, Model model) {
+        model.addAttribute("name", user.getName());
+        model.addAttribute("age", user.getAge());
+        model.addAttribute("email", user.getEmail());
+        model.addAttribute("phone", user.getPhone());
+        model.addAttribute("sex", user.getSex());
+        model.addAttribute("coffeePrefs", user.getCoffeePrefs());
+        model.addAttribute("pw", user.getPw());
+        model.addAttribute("userName", user.getUserName());
+
+        System.out.println(user);
 
 
-        return new ModelAndView("profile", "name", person.getName());
+        return new ModelAndView("profile", "name", user.getUserName());
+    }
+
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public ModelAndView login() {
+        return new ModelAndView("login", "command", new User());
+    }
+
+    @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
+    public ModelAndView loginUser(User user, Model model) {
+        model.addAttribute("pw", user.getPw());
+        model.addAttribute("userName", user.getUserName());
+
+        System.out.println(user);
+
+        return new ModelAndView("profile", "name", user.getUserName());
     }
 
 }

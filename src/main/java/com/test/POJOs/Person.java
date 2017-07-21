@@ -7,24 +7,15 @@ Aaron Board
 
 7/20/2017
  */
-public class Person {
+public abstract class Person {
     private String name;
     private int age;
     private long phone;
     private String email;
     private String sex;
     private String[] coffeePrefs;
-    private String pw;
 
     public Person() {
-    }
-
-    public String getPw() {
-        return pw;
-    }
-
-    public void setPw(String pw) {
-        this.pw = pw;
     }
 
     public String[] getCoffeePrefs() {
@@ -77,14 +68,11 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
+        return  "name='" + name + '\'' +
                 ", age=" + age +
                 ", phone=" + phone +
                 ", email='" + email + '\'' +
                 ", sex='" + sex + '\'' +
-                ", coffeePrefs=" + Arrays.toString(coffeePrefs) +
-                ", pw='" + pw + '\'' +
-                '}';
+                ", coffeePrefs=" + Arrays.toString(coffeePrefs);
     }
 }

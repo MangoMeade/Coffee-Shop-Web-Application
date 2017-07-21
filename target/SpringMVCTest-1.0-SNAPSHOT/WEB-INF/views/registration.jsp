@@ -121,17 +121,22 @@
     <section>
         <fieldset>
             <legend>
-                <strong>Step 3: Create a password</strong>
+                <strong>Step 3: Create a username and password</strong>
             </legend>
             <table>
                 <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="userName" id="userName" size="30" tabindex="13" placeholder="userName"
+                               autofocus required></td>
+                </tr>
+                <tr>
                     <td>Enter Password:</td>
-                    <td><input type="password" name="pw" id="pw" size="30" tabindex="13" placeholder="Password" autofocus
+                    <td><input type="password" name="pw" id="pw" size="30" tabindex="14" placeholder="Password" autofocus
                                required></td>
                 </tr>
                 <tr>
                     <td>Re-enter Password:</td>
-                    <td><input type="password" name="pw_veri" id="pw_veri" size="30" tabindex="14"
+                    <td><input type="password" name="pw_veri" id="pw_veri" size="30" tabindex="15"
                                placeholder="Re-enter Password" required></td>
                 </tr>
             </table>
@@ -143,8 +148,8 @@
         <fieldset>
             <legend><strong>Step 4: Send It!</strong></legend>
             <br>
-            <input id="submit" type="submit" value="Complete Survey" tabindex="15">&nbsp;
-            <input id="reset" type="reset" value="Reset" tabindex="16">
+            <input id="submit" type="submit" value="Complete Survey" tabindex="16">&nbsp;
+            <input id="reset" type="reset" value="Reset" tabindex="17">
         </fieldset>
     </section>
 </form:form>

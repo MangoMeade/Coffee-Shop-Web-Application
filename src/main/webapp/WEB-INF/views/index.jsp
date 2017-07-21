@@ -11,6 +11,10 @@
     <title>Title</title>
 </head>
 <body>
-${message}<a href="registration">Register!</a>
+${message}
+
+<br>
+<a href="registration"> <button>Register!</button></a>
+<a href="login"><button>Login</button></a>
 </body>
 </html>
