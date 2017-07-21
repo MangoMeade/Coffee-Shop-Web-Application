@@ -4,7 +4,7 @@ package com.test.POJOs;
  * Created by user on 7/21/2017.
  */
 public class User extends Person {
-    private String pw;
+    private String password;
     private String userName;
 
     public String getUserName() {
@@ -15,17 +15,17 @@ public class User extends Person {
         this.userName = userName;
     }
 
-    public String getPw() {
-        return pw;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPw(String pw) {
-        this.pw = pw;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return super.toString() + '\'' +
-                ", pw='" + pw + '\'';
+                ", password='" + password + '\'';
     }
 }

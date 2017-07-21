@@ -66,7 +66,7 @@
                 </tr>
                 <tr>
                     <td>Enter Password:</td>
-                    <td><input type="password" name="pw" id="pw" size="30" tabindex="2" placeholder="Password"
+                    <td><input type="password" name="password" id="password" size="30" tabindex="2" placeholder="Password"
                                autofocus
                                required></td>
                 </tr>

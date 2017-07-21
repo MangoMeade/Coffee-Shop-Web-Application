@@ -12,44 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        /*Table Elements*/
-        td {
-            vertical-align: top;
-        }
-
-        fieldset {
-            text-align: left;
-            padding: 5px;
-            background-color: #eee;
-        }
-
-        legend {
-            background-color: #f93;
-            border: 1px solid #f00;
-            padding: 5px;
-            margin-bottom: 5px;
-        }
-
-        section {
-            width: 550px;
-            margin: 20px auto;
-        }
-
-        /* Centers validation text */
-        #validation {
-            text-align: center;
-        }
-    </style>
+    <link href="resources/styles.css" rel='stylesheet'>
 </head>
 <body>
 <p>
@@ -119,24 +82,40 @@
     </section>
 
     <section>
+        <h4>How do you prepare your coffee?</h4>
+        <fieldset>
+            <legend><strong>Step 3: Coffee Options</strong></legend>
+            <br>
+            <select name="coffee_options" id="coffee_options" tabindex="13">
+                <option selected="selected" disabled>Please Select One...</option>
+                <option value="cream">Cream</option>
+                <option value="sugar">Sugar</option>
+                <option value="creamAndSugar">Cream and Sugar</option>
+                <option value="pumpkinSpice">PUMPKIN SPICE!!!!</option>
+                <option value="other">other</option>
+            </select>
+        </fieldset>
+    </section>
+
+    <section>
         <fieldset>
             <legend>
-                <strong>Step 3: Create a username and password</strong>
+                <strong>Step 4: Create a username and password</strong>
             </legend>
             <table>
                 <tr>
                     <td>Username:</td>
-                    <td><input type="text" name="userName" id="userName" size="30" tabindex="13" placeholder="userName"
+                    <td><input type="text" name="userName" id="userName" size="30" tabindex="14" placeholder="userName"
                                autofocus required></td>
                 </tr>
                 <tr>
                     <td>Enter Password:</td>
-                    <td><input type="password" name="pw" id="pw" size="30" tabindex="14" placeholder="Password" autofocus
+                    <td><input type="password" name="password" id="password" size="30" tabindex="15" placeholder="Password" autofocus
                                required></td>
                 </tr>
                 <tr>
                     <td>Re-enter Password:</td>
-                    <td><input type="password" name="pw_veri" id="pw_veri" size="30" tabindex="15"
+                    <td><input type="password" name="pw_veri" id="pw_veri" size="30" tabindex="16"
                                placeholder="Re-enter Password" required></td>
                 </tr>
             </table>
@@ -146,10 +125,10 @@
     <section>
         <h4>Submit or Reset the form below.</h4>
         <fieldset>
-            <legend><strong>Step 4: Send It!</strong></legend>
+            <legend><strong>Step 5: Send It!</strong></legend>
             <br>
-            <input id="submit" type="submit" value="Complete Survey" tabindex="16">&nbsp;
-            <input id="reset" type="reset" value="Reset" tabindex="17">
+            <input id="submit" type="submit" value="Complete Registration" tabindex="17">&nbsp;
+            <input id="reset" type="reset" value="Reset" tabindex="18">
         </fieldset>
     </section>
 </form:form>
@@ -159,24 +138,8 @@
     </p>
 </footer>
 
-<script type="text/javascript">
+<script src="resources/helper.js"></script>
 
-    function checkForm(form)
-    {
-        if(form.pw.value != "" && form.pw_veri.value == form.pw.value) {
-            if(form.pw.value.length < 6) {
-                alert("Error: Password must contain at least six characters!");
-                form.pw.focus();
-                return false;
-            }
-        } else {
-            alert("Error: Your passwords do not match!");
-            form.pw.focus();
-            return false;
-        }
-        return true;
-    }
 
-</script>
 </body>
 </html>
