@@ -10,8 +10,17 @@ public class Person {
     private int age;
     private long phone;
     private String email;
+    private String sex;
 
     public Person() {
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getName() {
@@ -30,11 +39,11 @@ public class Person {
         this.age = age;
     }
 
-    public long getphone() {
+    public long getPhone() {
         return phone;
     }
 
-    public void setphone(long phone) {
+    public void setPhone(long phone) {
         this.phone = phone;
     }
 
@@ -44,5 +53,16 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", phone=" + phone +
+                ", email='" + email + '\'' +
+                ", sex='" + sex + '\'' +
+                '}';
     }
 }

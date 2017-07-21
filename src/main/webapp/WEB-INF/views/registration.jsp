@@ -6,11 +6,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Working with Forms</title>
+    <title>Registration</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -49,9 +50,8 @@
     <a href="/">Back to Homepage</a>
 </p>
 <header><h1>Register</h1></header>
-<form id="survey" name="survey" method="post"
-      modelAttribute = "register"
-      oninput="x.value=parseInt(range.value)+parseInt(0)">
+<form:form method="POST" action="/registerUser"
+           oninput="x.value=parseInt(range.value)+parseInt(0)">
     <section>
         <h4>Please complete the following information about yourself below.</h4>
         <fieldset>
@@ -61,7 +61,7 @@
             <table>
                 <tr>
                     <td>Name:</td>
-                    <td><input type="text" name="fullName" id="username" size="30" tabindex="1" placeholder="Full Name" autofocus required></td>
+                    <td><input type="text" name="name" id="name" size="30" tabindex="1" placeholder="Full Name" autofocus required></td>
                 </tr>
                 <tr>
                     <td>Email:</td>
@@ -87,14 +87,13 @@
     <section>
         <h4>Submit or Reset the form below.</h4>
         <fieldset>
-            <legend><strong>Step 5: Send It!</strong></legend>
+            <legend><strong>Step 2: Send It!</strong></legend>
             <br>
             <input id="submit" type="submit" value="Complete Survey" tabindex="7">&nbsp;
             <input id="reset" type="reset" value="Reset" tabindex="8">
         </fieldset>
     </section>
-</form>
-<a href="profile">Go to profile</a>
+</form:form>
 <footer>
     <p id="validation">
         <a href="http://validator.w3.org/check?uri=referer" title="HTML5 Validation">HTML5 Validation</a>
