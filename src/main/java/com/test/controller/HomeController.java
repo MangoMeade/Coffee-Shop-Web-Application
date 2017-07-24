@@ -51,4 +51,11 @@ public class HomeController {
         return new ModelAndView("profile", "name", user.getUserName());
     }
 
+
+    @RequestMapping(value = "/checkOut")
+    public ModelAndView checkOutReciept(){
+        return new ModelAndView("checkOut", "reciept", "this is your reciept");
+    }
+
+
 }

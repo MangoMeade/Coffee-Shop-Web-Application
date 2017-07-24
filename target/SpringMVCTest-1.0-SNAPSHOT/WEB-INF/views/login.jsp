@@ -11,44 +11,8 @@
 <head>
     <title>Login</title>
 
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            font-size: 12px;
-        }
 
-        h1 {
-            text-align: center;
-        }
-
-        /*Table Elements*/
-        td {
-            vertical-align: top;
-        }
-
-        fieldset {
-            text-align: left;
-            padding: 5px;
-            background-color: #eee;
-        }
-
-        legend {
-            background-color: #f93;
-            border: 1px solid #f00;
-            padding: 5px;
-            margin-bottom: 5px;
-        }
-
-        section {
-            width: 550px;
-            margin: 20px auto;
-        }
-
-        /* Centers validation text */
-        #validation {
-            text-align: center;
-        }
-    </style>
+    <link href="resources/styles.css" rel='stylesheet'>
 </head>
 <body>
 
@@ -61,7 +25,7 @@
             <table>
                 <tr>
                     <td>Username:</td>
-                    <td><input type="text" name="userName" id="userName" size="30" tabindex="1" placeholder="userName"
+                    <td><input type="text" name="userName" id="userName" size="30" tabindex="1" placeholder="User Name"
                                autofocus required></td>
                 </tr>
                 <tr>

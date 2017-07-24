@@ -13,17 +13,8 @@ public abstract class Person {
     private long phone;
     private String email;
     private String sex;
-    private String[] coffeePrefs;
 
     public Person() {
-    }
-
-    public String[] getCoffeePrefs() {
-        return coffeePrefs;
-    }
-
-    public void setCoffeePrefs(String[] coffeePrefs) {
-        this.coffeePrefs = coffeePrefs;
     }
 
     public String getSex() {
@@ -72,7 +63,6 @@ public abstract class Person {
                 ", age=" + age +
                 ", phone=" + phone +
                 ", email='" + email + '\'' +
-                ", sex='" + sex + '\'' +
-                ", coffeePrefs=" + Arrays.toString(coffeePrefs);
+                ", sex='" + sex ;
     }
 }

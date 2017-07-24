@@ -25,7 +25,7 @@
             <table>
                 <tr>
                     <td>Username:</td>
-                    <td><input type="text" name="userName" id="userName" size="30" tabindex="1" placeholder="userName"
+                    <td><input type="text" name="userName" id="userName" size="30" tabindex="1" placeholder="User Name"
                                autofocus required></td>
                 </tr>
                 <tr>

@@ -1,11 +1,23 @@
 package com.test.POJOs;
 
+import java.util.Arrays;
+
 /**
  * Created by user on 7/21/2017.
  */
 public class User extends Person {
     private String password;
     private String userName;
+    private String[] coffeePrefs;
+
+
+    public String[] getCoffeePrefs() {
+        return coffeePrefs;
+    }
+
+    public void setCoffeePrefs(String[] coffeePrefs) {
+        this.coffeePrefs = coffeePrefs;
+    }
 
     public String getUserName() {
         return userName;
@@ -26,6 +38,8 @@ public class User extends Person {
     @Override
     public String toString() {
         return super.toString() + '\'' +
-                ", password='" + password + '\'';
+                ", password='" + password + '\''
+                + '\'' +
+                ", coffeePrefs=" + Arrays.toString(coffeePrefs);
     }
 }
