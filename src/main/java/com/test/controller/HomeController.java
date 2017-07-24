@@ -53,8 +53,8 @@ public class HomeController {
 
 
     @RequestMapping(value = "/checkOut")
-    public ModelAndView checkOutReciept(){
-        return new ModelAndView("checkOut", "reciept", "this is your reciept");
+    public ModelAndView checkOutReceipt(){
+        return new ModelAndView("checkOut", "receipt", "this is your receipt");
     }
 
 

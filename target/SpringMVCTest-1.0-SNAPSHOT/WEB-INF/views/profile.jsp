@@ -9,7 +9,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-    <title>Profile</title>
+    <title>Store</title>
 
     <link href="resources/styles.css" rel='stylesheet'>
 </head>
