@@ -55,4 +55,8 @@ public class JDBCDao implements userDao {
     public User getUser(String email, String password) {
         return null;
     }
+
+    public String getMsg() {
+        return null;
+    }
 }

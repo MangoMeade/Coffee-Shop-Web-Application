@@ -13,7 +13,7 @@
         </id>
         <property name="name" column="name" type="string"/>
         <property name="email" column="email" type="string"/>
-        <property name="phone" column="phone" type="long"/>
+        <property name="phone" column="phone" type="string"/>
         <property name="userName" column="username" type="string"/>
         <property name="password" column="password" type="string"/>
         <property name="coffeePrefs" column="coffeePrefs" type="string"/>

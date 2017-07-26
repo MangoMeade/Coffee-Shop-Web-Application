@@ -10,7 +10,7 @@ Aaron Board
 public abstract class Person {
     private String name;
     private int age;
-    private long phone;
+    private String phone;
     private String email;
     private String sex;
 
@@ -41,11 +41,11 @@ public abstract class Person {
         this.age = age;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

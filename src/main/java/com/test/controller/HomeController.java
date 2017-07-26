@@ -55,7 +55,7 @@ public class HomeController {
         System.out.println(user);
         User loggedInUser = dao.getUser(user.getUserName(), user.getPassword());
         if (loggedInUser == null){
-            return new ModelAndView("login", "alert", "Your username or password is incorrect!");
+            return new ModelAndView("login", "alert", dao.getMsg());
         }else {
             return new ModelAndView("profile", "name", loggedInUser.getUserName());
         }

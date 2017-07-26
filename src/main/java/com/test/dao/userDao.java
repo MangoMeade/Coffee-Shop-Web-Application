@@ -16,4 +16,6 @@ public interface userDao {
     public List<User> readUsers();
     public void addUser(User user);
     public User getUser(String email, String password);
+
+    String getMsg();
 }

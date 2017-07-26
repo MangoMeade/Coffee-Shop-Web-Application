@@ -17,12 +17,13 @@ Aaron Board
 public class HibernateDao implements userDao {
 
     private static SessionFactory factory;
-
+    private static String msg;
 
     public HibernateDao(SessionFactory factory) {
         this.factory = factory;
     }
 
+    /* Method to  READ all the users */
     public List<User> readUsers() {
         Session session = factory.openSession();
         Transaction tx = null;
@@ -30,7 +31,7 @@ public class HibernateDao implements userDao {
         try {
             tx = session.beginTransaction();
             users = session.createQuery("FROM User").list();
-            tx.commit();
+            tx.commit();  //COMMIT MUST COME AFTER THE ACTION
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
@@ -40,14 +41,14 @@ public class HibernateDao implements userDao {
         return users;
     }
 
-    /* Method to CREATE an user in the database */
+    /* Method to CREATE a user in the database */
     public void addUser(User user) {
         Session session = factory.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            tx.commit();
             session.save(user);
+            tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
             e.printStackTrace();
@@ -58,21 +59,21 @@ public class HibernateDao implements userDao {
 
     public User getUser(String userName, String password) {
         List<User> users = readUsers();
-        User LoggedInUser = null;
+
 
         for( User user : users){
             if (user.getUserName().equals(userName)){
                 if (user.getPassword().equals(password)){
-                    LoggedInUser = user;
+                    return user;
                 }
                 else {
-                    System.out.println("Wrong Password!");
+                    msg = "Wrong Password!";
                 }
             }else {
-                System.out.println("Wrong User Name!");
+                msg = "User does not exist, please register";
             }
         }
-        return LoggedInUser;
+        return null;
     }
 
 
@@ -106,8 +107,7 @@ public class HibernateDao implements userDao {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            User user =
-                    (User) session.get(User.class, userID);
+            User user = (User) session.get(User.class, userID);
             user.setPassword(newPass);
             session.update(user);
             tx.commit();
@@ -126,8 +126,7 @@ public class HibernateDao implements userDao {
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            User user =
-                    (User) session.get(User.class, userID);
+            User user = (User) session.get(User.class, userID);
             session.delete(user);
             tx.commit();
         } catch (HibernateException e) {
@@ -136,6 +135,14 @@ public class HibernateDao implements userDao {
         } finally {
             session.close();
         }
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public static void setMsg(String msg) {
+        HibernateDao.msg = msg;
     }
 }
 
