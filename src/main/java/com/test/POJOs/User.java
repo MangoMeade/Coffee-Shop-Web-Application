@@ -6,16 +6,36 @@ import java.util.Arrays;
  * Created by user on 7/21/2017.
  */
 public class User extends Person {
+    private int id;
     private String password;
     private String userName;
-    private String[] coffeePrefs;
+    private String coffeePrefs;
 
 
-    public String[] getCoffeePrefs() {
+    public User() {
+    }
+
+    public User(int id, String password, String userName, String coffeePrefs) {
+        super();
+        this.id = id;
+        this.password = password;
+        this.userName = userName;
+        this.coffeePrefs = coffeePrefs;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCoffeePrefs() {
         return coffeePrefs;
     }
 
-    public void setCoffeePrefs(String[] coffeePrefs) {
+    public void setCoffeePrefs(String coffeePrefs) {
         this.coffeePrefs = coffeePrefs;
     }
 
@@ -37,9 +57,11 @@ public class User extends Person {
 
     @Override
     public String toString() {
-        return super.toString() + '\'' +
-                ", password='" + password + '\''
-                + '\'' +
-                ", coffeePrefs=" + Arrays.toString(coffeePrefs);
+        return "User{" +
+                "id=" + id +
+                ", password='" + password + '\'' +
+                ", userName='" + userName + '\'' +
+                ", coffeePrefs='" + coffeePrefs + '\'' +
+                '}';
     }
 }

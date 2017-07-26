@@ -3,16 +3,15 @@ package com.test.dao;
 import com.test.JDBC.JDBC;
 import com.test.POJOs.User;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 
 /*
 Aaron Board
  */
 public class JDBCDao implements userDao {
+
+
     public ArrayList<User> readUsers() {
         Connection Jdbc = JDBC.getInstance();
 
@@ -33,14 +32,16 @@ public class JDBCDao implements userDao {
     }
 
     public void addUser(User user) {
-        Connection Jdbc = JDBC.getInstance();
+
 
         Statement myStmt;
         try {
+            Connection Jdbc = JDBC.getInstance();
             myStmt = Jdbc.createStatement();
 
-            myStmt.executeUpdate("INSERT INTO user (username, email, password, coffeePrefs, sex, phone, name, age)\n" +
-                    "VALUES ("+user.getUserName()+", "+user.getEmail()+", "+user.getPassword()+", "+user.getCoffeePrefs()+", "+user.getSex()+", "+user.getPhone()+", "+user.getName()+", "+user.getAge()+");");
+            String vals = String.format(" Values('%s','%s','%s','%s','%s','%d','%s','%d')", user.getUserName(),user.getEmail(),user.getPassword(),user.getCoffeePrefs(),user.getSex(),user.getPhone(),user.getName(),user.getAge());
+
+            myStmt.executeUpdate("INSERT INTO user(username, email, password, coffeePrefs, sex, phone, name, age)\n" + vals);
             System.out.println("update complete");
 
 

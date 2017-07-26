@@ -32,5 +32,5 @@ function updateList() {
 }
 
 function checkOut() {
-    return "checkout"
+    return shoppingList;
 }

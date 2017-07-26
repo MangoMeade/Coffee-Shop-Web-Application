@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-${reciept}
+${receipt}
 </body>
 </html>

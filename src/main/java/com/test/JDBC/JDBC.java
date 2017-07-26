@@ -18,12 +18,15 @@ public class JDBC {
     public static Connection getInstance(){
         try{
             if (myConn == null){
+                Class.forName("com.mysql.jdbc.Driver");
                 myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/coffeeShop", "ajboard13", "Runner13");
                 return myConn;
             } else {
                 return myConn;
             }
         } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;

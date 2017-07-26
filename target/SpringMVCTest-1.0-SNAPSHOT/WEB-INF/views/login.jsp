@@ -23,6 +23,7 @@
                 <strong>Login</strong>
             </legend>
             <table>
+                    ${alert}
                 <tr>
                     <td>Username:</td>
                     <td><input type="text" name="userName" id="userName" size="30" tabindex="1" placeholder="User Name"
