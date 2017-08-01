@@ -81,4 +81,12 @@ public class JDBCDao implements userDao {
     public void deleteItem(int itemID) {
 
     }
+
+    public void editItem(ItemsEntity itemID) {
+
+    }
+
+    public ItemsEntity getItemsEntity(int itemID) {
+        return null;
+    }
 }

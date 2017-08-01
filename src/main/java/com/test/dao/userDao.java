@@ -28,4 +28,8 @@ public interface userDao {
     int getLastItemID();
 
     void deleteItem(int itemID);
+
+    void editItem(ItemsEntity itemID);
+
+    ItemsEntity getItemsEntity(int itemID);
 }

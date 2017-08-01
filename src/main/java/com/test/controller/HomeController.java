@@ -17,7 +17,8 @@ import java.util.ArrayList;
 public class HomeController {
 
     private userDao dao = DaoFactory.getInstance(userDao.HIBERNATE_DAO);
-    User loggedInUser;
+    private User loggedInUser;
+    private int itemId;
 
 
     @RequestMapping("/")
@@ -99,6 +100,27 @@ public class HomeController {
 
         dao.deleteItem(itemID);
         return  maybeLogIn(model);
+    }
+
+
+    @RequestMapping(value = "/editItem", method = RequestMethod.GET)
+    public ModelAndView editItems(@RequestParam("id") int itemId) {
+        this.itemId = itemId;
+        return new ModelAndView("editItems", "command", new ItemsEntity());
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public ModelAndView editItem(ItemsEntity tempItem, Model model){
+
+        ItemsEntity itemsInDB = dao.getItemsEntity(itemId);
+
+        itemsInDB.setName(tempItem.getName());
+        itemsInDB.setDescription(tempItem.getDescription());
+        itemsInDB.setPrice(tempItem.getPrice());
+        itemsInDB.setInitialQuantity(tempItem.getInitialQuantity());
+
+        dao.editItem(itemsInDB);
+        return maybeLogIn(model);
     }
 
 

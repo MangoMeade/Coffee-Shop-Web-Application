@@ -2,22 +2,21 @@
   Created by IntelliJ IDEA.
   User: user
   Date: 8/1/2017
-  Time: 9:24 AM
+  Time: 2:18 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
-    <title>Add Item</title>
-    <link href="resources/styles.css" rel='stylesheet'>
+    <title>Edit Item</title>
 </head>
 <body>
 <p>
     <a href="/">Back to Homepage</a>
 </p>
-<header><h1>Add Item</h1></header>
-<form:form method="POST" action="/addItem">
+<header><h1>Edit Item</h1></header>
+<form:form method="POST" action="/edit">
     <section>
         <fieldset>
             <legend>
@@ -53,9 +52,7 @@
         </fieldset>
     </section>
 </form:form>
-
 <td><a href="profile"><button>Back to Store</button></a> </td>
-
 
 </body>
 </html>

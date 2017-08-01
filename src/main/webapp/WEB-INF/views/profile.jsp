@@ -44,8 +44,8 @@
                     <td>$${myvar.price}</td>
                     <td>${myvar.initialQuantity}</td>
                     <td><a href="delete?id=${myvar.iditems}">delete item</a></td>
-                    <td><a href="edit?id=${myvar.iditems}">edit item</a></td>
-                    <td><button onclick="addToList(${myvar.name}, ${myvar.price})">Add To Cart</button></td>
+                    <td><a href="editItem?id=${myvar.iditems}">edit item</a></td>
+                    <td><button onclick="addToList( '${myvar.name}', '${myvar.price}')">Add To Cart</button></td>
                 </tr>
             </c:forEach>
         </table>

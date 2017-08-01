@@ -96,10 +96,33 @@ public class HibernateDao implements userDao {
     public void deleteItem(int itemID) {
         Session session = factory.openSession();
         Transaction tx = null;
-        ItemsEntity itemsEntity = (ItemsEntity) session.createQuery("FROM ItemsEntity where iditems = " +itemID).setMaxResults(1).uniqueResult();
+        ItemsEntity itemsEntity = getItemsEntity(itemID);
         try {
             tx = session.beginTransaction();
             session.delete(itemsEntity);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public ItemsEntity getItemsEntity(int itemID) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ItemsEntity itemsEntity =  (ItemsEntity) session.createQuery("FROM ItemsEntity where iditems = " +itemID).setMaxResults(1).uniqueResult();
+        session.close();
+        return itemsEntity;
+    }
+
+    public void editItem(ItemsEntity itemID) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.update(itemID);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null) tx.rollback();
