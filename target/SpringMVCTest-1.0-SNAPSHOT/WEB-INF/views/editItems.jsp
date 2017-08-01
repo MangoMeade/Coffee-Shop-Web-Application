@@ -26,24 +26,24 @@
                 <p style="text-align: center">${msg}</p>
                 <tr>
                     <td>Item Name:</td>
-                    <td><input type="text" name="name" id="name" size="30" tabindex="1" placeholder="item name"
+                    <td><input type="text" name="name" id="name" size="30" tabindex="1" placeholder="${name}"
                                autofocus required></td>
                 </tr>
                 <tr>
                     <td>price:</td>
                     <td><input type="price" name="price" id="price" size="30" tabindex="2"
-                               placeholder="price" autofocus
+                               placeholder="${price}" autofocus
                                required></td>
                 </tr>
                 <tr>
                     <td>description:</td>
                     <td><input type="description" name="description" id="description" size="45" tabindex="3"
-                               placeholder="description" ></td>
+                               placeholder="${description}" ></td>
                 </tr>
                 <tr>
                     <td>quantity:</td>
                     <td><input type="initialQuantity" name="initialQuantity" id="initialQuantity" size="45" tabindex="4"
-                               placeholder="quantity" ></td>
+                               placeholder="${quantity}" ></td>
                 </tr>
                 <tr>
                     <td><input id="submit" type="submit" value="Submit" tabindex="5"></td>

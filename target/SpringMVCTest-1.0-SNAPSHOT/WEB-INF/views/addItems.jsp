@@ -39,15 +39,15 @@
                 <tr>
                     <td>description:</td>
                     <td><input type="description" name="description" id="description" size="45" tabindex="3"
-                               placeholder="description" ></td>
+                               placeholder="description" required></td>
                 </tr>
                 <tr>
                     <td>quantity:</td>
                     <td><input type="initialQuantity" name="initialQuantity" id="initialQuantity" size="45" tabindex="4"
-                               placeholder="quantity" ></td>
+                               placeholder="quantity" required></td>
                 </tr>
                 <tr>
-                    <td><input id="submit" type="submit" value="Submit" tabindex="5"></td>
+                    <td><input id="submit" type="submit" value="Submit" tabindex="5" ></td>
                 </tr>
             </table>
         </fieldset>

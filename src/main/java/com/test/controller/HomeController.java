@@ -104,13 +104,19 @@ public class HomeController {
 
 
     @RequestMapping(value = "/editItem", method = RequestMethod.GET)
-    public ModelAndView editItems(@RequestParam("id") int itemId) {
+    public ModelAndView editItems(@RequestParam("id") int itemId , Model model) {
         this.itemId = itemId;
+        ItemsEntity itemsInDB = dao.getItemsEntity(itemId);
+        model.addAttribute("name", itemsInDB.getName());
+        model.addAttribute("price", itemsInDB.getPrice());
+        model.addAttribute("description", itemsInDB.getDescription());
+        model.addAttribute("quantity", itemsInDB.getInitialQuantity());
         return new ModelAndView("editItems", "command", new ItemsEntity());
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
     public ModelAndView editItem(ItemsEntity tempItem, Model model){
+
 
         ItemsEntity itemsInDB = dao.getItemsEntity(itemId);
 
