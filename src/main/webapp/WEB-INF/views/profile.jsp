@@ -33,8 +33,10 @@
                 <td>Description</td>
                 <td>Price</td>
                 <td>Quantity</td>
-                <td>delete item</td>
-                <td>edit item</td>
+                <c:if test="${isMod == true}">
+                    <td>delete item</td>
+                    <td>edit item</td>
+                </c:if>
                 <td>Add To Cart</td>
             </tr>
             <c:forEach var="myvar" items="${cList}">
@@ -43,15 +45,21 @@
                     <td>${myvar.description}</td>
                     <td>$${myvar.price}</td>
                     <td>${myvar.initialQuantity}</td>
-                    <td><a href="delete?id=${myvar.iditems}">delete item</a></td>
-                    <td><a href="editItem?id=${myvar.iditems}">edit item</a></td>
-                    <td><button onclick="addToList( '${myvar.name}', '${myvar.price}')">Add To Cart</button></td>
+                    <c:if test="${isMod == true}">
+                        <td><a href="delete?id=${myvar.iditems}">delete item</a></td>
+                        <td><a href="editItem?id=${myvar.iditems}">edit item</a></td>
+                    </c:if>
+                    <td>
+                        <button onclick="addToList( '${myvar.name}', '${myvar.price}')">Add To Cart</button>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
         <br><br>
         <c:if test="${isMod == true}">
-            <a href="addItems"><button>Add Items</button></a>
+            <a href="addItems">
+                <button>Add Items</button>
+            </a>
         </c:if>
 
     </fieldset>

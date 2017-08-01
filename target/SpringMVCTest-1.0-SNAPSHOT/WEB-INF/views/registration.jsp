@@ -96,7 +96,32 @@
             </select>
         </fieldset>
     </section>
-v
+
+    <section>
+        <h4>Please make a username and password.</h4>
+        <fieldset>
+            <legend>
+                <strong>Step 4: Create Username</strong>
+            </legend>
+            <table>
+                <tr>
+                    <td>Username:</td>
+                    <td><input type="text" name="userName" id="userName" size="30" tabindex="14" placeholder="userName"
+                               autofocus required></td>
+                </tr>
+                <tr>
+                    <td>password:</td>
+                    <td><input type="password" name="password" id="password" size="30" tabindex="15" placeholder="password"
+                               required></td>
+                </tr>
+                <tr>
+                    <td>re-enter password:</td>
+                    <td><input type="password" name="pw_veri" id="pw_veri" size="30" tabindex="16" placeholder="re-enter password"
+                               required></td>
+                </tr>
+            </table>
+        </fieldset>
+    </section>
 
     <section>
         <h4>Submit or Reset the form below.</h4>

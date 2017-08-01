@@ -19,5 +19,8 @@
         <property name="coffeePrefs" column="coffeePrefs" type="string"/>
         <property name="sex" column="sex" type="string"/>
         <property name="age" column="age" type="int"/>
+        <property name="isAdmin">
+            <column name="isAdmin" sql-type="BOOLEAN" not-null="true"/>
+        </property>
     </class>
 </hibernate-mapping>

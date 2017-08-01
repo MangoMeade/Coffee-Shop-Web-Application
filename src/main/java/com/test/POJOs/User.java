@@ -8,6 +8,15 @@ public class User extends Person {
     private String password;
     private String userName;
     private String coffeePrefs;
+    private Boolean  isAdmin;
+
+    public Boolean getIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(Boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
 
 
     public User() {

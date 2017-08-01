@@ -35,7 +35,7 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    public ModelAndView registerUser(User user) {
+    public ModelAndView registerUser(User user, Model model) {
 
         System.out.println(user);
         for(User user1: dao.readUsers()){
@@ -44,7 +44,8 @@ public class HomeController {
             }
         }
         dao.addUser(user);
-        return new ModelAndView("profile", "name", user.getUserName());
+        loggedInUser = user;
+        return maybeLogIn(model);
     }
 
 
@@ -76,7 +77,7 @@ public class HomeController {
             ArrayList<ItemsEntity> itemsList = (ArrayList<ItemsEntity>) dao.readItems();
             System.out.println(itemsList);
             model.addAttribute("name", loggedInUser.getUserName());
-            model.addAttribute("isMod", true);
+            model.addAttribute("isMod", loggedInUser.getIsAdmin());
             return new ModelAndView("profile", "cList", itemsList);
         }
     }
