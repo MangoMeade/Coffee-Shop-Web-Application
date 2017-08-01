@@ -1,10 +1,12 @@
 package com.test.dao;
 
 import com.test.JDBC.JDBC;
+import com.test.POJOs.ItemsEntity;
 import com.test.POJOs.User;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 /*
 Aaron Board
@@ -58,5 +60,25 @@ public class JDBCDao implements userDao {
 
     public String getMsg() {
         return null;
+    }
+
+    public void addItem(ItemsEntity item) {
+
+    }
+
+    public List<ItemsEntity> readItems() {
+        return null;
+    }
+
+    public void addInventory(int iditems) {
+
+    }
+
+    public int getLastItemID() {
+        return 0;
+    }
+
+    public void deleteItem(int itemID) {
+
     }
 }

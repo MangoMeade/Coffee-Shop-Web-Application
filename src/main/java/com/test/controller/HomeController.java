@@ -1,30 +1,30 @@
 package com.test.controller;
 
+import com.test.POJOs.ItemsEntity;
 import com.test.POJOs.User;
 import com.test.dao.userDao;
 import com.test.factory.DaoFactory;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @Controller
 public class HomeController {
 
-    userDao dao = DaoFactory.getInstance(userDao.HIBERNATE_DAO);
-
+    private userDao dao = DaoFactory.getInstance(userDao.HIBERNATE_DAO);
+    User loggedInUser;
 
 
     @RequestMapping("/")
 
-    public ModelAndView helloWorld()
-    {
+    public ModelAndView helloWorld() {
         return new
-                ModelAndView("index","message","Welcome to GC COFFEE");
+                ModelAndView("index", "message", "Welcome to GC COFFEE");
 
     }
 
@@ -37,10 +37,16 @@ public class HomeController {
     public ModelAndView registerUser(User user) {
 
         System.out.println(user);
+        for(User user1: dao.readUsers()){
+            if (user.getUserName().equals(user1.getUserName())){
+                return new ModelAndView("registration", "msg", "User name has been taken!");
+            }
+        }
         dao.addUser(user);
-
         return new ModelAndView("profile", "name", user.getUserName());
     }
+
+
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
@@ -48,22 +54,56 @@ public class HomeController {
     }
 
 
-
     @RequestMapping(value = "/loginUser", method = RequestMethod.POST)
-    public ModelAndView loginUser(User user) {
+    public ModelAndView loginUser(User user, Model model) {
 
         System.out.println(user);
-        User loggedInUser = dao.getUser(user.getUserName(), user.getPassword());
-        if (loggedInUser == null){
+        loggedInUser = dao.getUser(user.getUserName(), user.getPassword());
+        return maybeLogIn(model);
+    }
+
+    @RequestMapping(value = "/profile")
+    public ModelAndView profile(Model model) {
+        return maybeLogIn(model);
+    }
+
+    private ModelAndView maybeLogIn(Model model) {
+        if (loggedInUser == null) {
+
             return new ModelAndView("login", "alert", dao.getMsg());
-        }else {
-            return new ModelAndView("profile", "name", loggedInUser.getUserName());
+        } else {
+            ArrayList<ItemsEntity> itemsList = (ArrayList<ItemsEntity>) dao.readItems();
+            System.out.println(itemsList);
+            model.addAttribute("name", loggedInUser.getUserName());
+            model.addAttribute("isMod", true);
+            return new ModelAndView("profile", "cList", itemsList);
         }
+    }
+
+    @RequestMapping(value = "/addItems", method = RequestMethod.GET)
+    public ModelAndView addItems() {
+        return new ModelAndView("addItems", "command", new ItemsEntity());
+    }
+
+    @RequestMapping(value = "/addItem", method = RequestMethod.POST)
+    public ModelAndView addItem(ItemsEntity item) {
+
+        System.out.println(item);
+        dao.addItem(item);
+
+        return new ModelAndView("addItems", "msg", "Successfully added "+item.getName() + "!");
+    }
+
+    @RequestMapping(value = "delete")
+    public ModelAndView deleteItem(@RequestParam("id") int itemID, Model model){
+
+        dao.deleteItem(itemID);
+        return  maybeLogIn(model);
     }
 
 
     @RequestMapping(value = "/checkOut")
-    public ModelAndView checkOutReceipt(){
+    public ModelAndView checkOutReceipt() {
         return new ModelAndView("checkOut", "receipt", "this is your receipt");
     }
 

@@ -1,13 +1,13 @@
 package com.test.dao;
 
+import com.test.POJOs.InventoryEntity;
+import com.test.POJOs.ItemsEntity;
 import com.test.POJOs.User;
-import com.test.dao.userDao;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -41,6 +41,74 @@ public class HibernateDao implements userDao {
         return users;
     }
 
+    public List<ItemsEntity> readItems() {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        List<ItemsEntity> items = null;
+        try {
+            tx = session.beginTransaction();
+            items = session.createQuery("FROM ItemsEntity ").list();
+            tx.commit();  //COMMIT MUST COME AFTER THE ACTION
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return items;
+    }
+
+    public void addInventory(int iditems) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        InventoryEntity inventoryEntity = new InventoryEntity();
+        inventoryEntity.setItemsid(iditems);
+        try {
+            tx = session.beginTransaction();
+            session.save(inventoryEntity);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
+    public int getLastItemID() {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ItemsEntity item = null;
+        try {
+            tx = session.beginTransaction();
+            item = (ItemsEntity) session.createQuery("FROM ItemsEntity ORDER BY iditems DESC").setMaxResults(1).uniqueResult();
+            tx.commit();  //COMMIT MUST COME AFTER THE ACTION
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        assert item != null;
+        return item.getIditems();
+    }
+
+    public void deleteItem(int itemID) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        ItemsEntity itemsEntity = (ItemsEntity) session.createQuery("FROM ItemsEntity where iditems = " +itemID).setMaxResults(1).uniqueResult();
+        try {
+            tx = session.beginTransaction();
+            session.delete(itemsEntity);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
     /* Method to CREATE a user in the database */
     public void addUser(User user) {
         Session session = factory.openSession();
@@ -57,23 +125,47 @@ public class HibernateDao implements userDao {
         }
     }
 
+    public void addItem(ItemsEntity item) {
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.save(item);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null) tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
+
     public User getUser(String userName, String password) {
         List<User> users = readUsers();
-
-
+        boolean isUser = false;
         for( User user : users){
-            if (user.getUserName().equals(userName)){
-                if (user.getPassword().equals(password)){
+            if (isUserNameEquals(userName, user)) {
+                isUser = true;
+                if (isPasswordEquals(password, user)) {
                     return user;
-                }
-                else {
+                } else {
                     msg = "Wrong Password!";
+
                 }
-            }else {
-                msg = "User does not exist, please register";
             }
         }
+        if (!isUser) {
+            msg = "User does not exist, please register";
+        }
         return null;
+    }
+
+    private boolean isPasswordEquals(String password, User user) {
+        return user.getPassword().equals(password);
+    }
+
+    private boolean isUserNameEquals(String userName, User user) {
+        return user.getUserName().equals(userName);
     }
 
 
@@ -141,8 +233,5 @@ public class HibernateDao implements userDao {
         return msg;
     }
 
-    public static void setMsg(String msg) {
-        HibernateDao.msg = msg;
-    }
 }
 

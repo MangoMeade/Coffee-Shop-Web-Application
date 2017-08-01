@@ -8,16 +8,16 @@ Aaron Board
 7/24/2017
  */
 public class ShoppingList {
-    private ArrayList<String> shoppingList;
+    private ArrayList<ItemsEntity> shoppingList;
 
     public ShoppingList() {
     }
 
-    public ArrayList<String> getShoppingList() {
+    public ArrayList<ItemsEntity> getShoppingList() {
         return shoppingList;
     }
 
-    public void setShoppingList(ArrayList<String> shoppingList) {
+    public void setShoppingList(ArrayList<ItemsEntity> shoppingList) {
         this.shoppingList = shoppingList;
     }
 }

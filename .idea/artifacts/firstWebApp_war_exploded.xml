@@ -36,6 +36,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/target/firstWebApp-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="firstWebApp/web/Web" />
+      <element id="artifact" artifact-name="SpringMVCTest:war exploded" />
     </root>
   </artifact>
 </component>

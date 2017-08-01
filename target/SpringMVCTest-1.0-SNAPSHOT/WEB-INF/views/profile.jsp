@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Store</title>
@@ -26,48 +27,32 @@
         <legend>
             <strong>Select the items you want below: </strong>
         </legend>
-        <tr>
-            <td>
-                <BUTTON onclick="addToList('Black Coffee',2.00)">Black Coffee</BUTTON>
-                $2.00
-            </td>
-            <td>
-                <BUTTON onclick="addToList('Cappuccino',3.00)">Cappuccino</BUTTON>
-                $3.00
-            </td>
-        </tr>
+        <table border="1">
+            <tr>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>delete item</td>
+                <td>edit item</td>
+                <td>Add To Cart</td>
+            </tr>
+            <c:forEach var="myvar" items="${cList}">
+                <tr>
+                    <td>${myvar.name}</td>
+                    <td>${myvar.description}</td>
+                    <td>$${myvar.price}</td>
+                    <td>${myvar.initialQuantity}</td>
+                    <td><a href="delete?id=${myvar.iditems}">delete item</a></td>
+                    <td><a href="edit?id=${myvar.iditems}">edit item</a></td>
+                    <td><button onclick="addToList(${myvar.name}, ${myvar.price})">Add To Cart</button></td>
+                </tr>
+            </c:forEach>
+        </table>
         <br><br>
-        <tr>
-            <td>
-                <BUTTON onclick="addToList('Frappe',3.50)">Frappe</BUTTON>
-                $3.50
-            </td>
-            <td>
-                <BUTTON onclick="addToList('Caramel Macchiato',4.00)">Caramel Macchiato</BUTTON>
-                $4.00
-            </td>
-        </tr>
-        <br><br>
-        <tr>
-            <td>
-                <BUTTON onclick="addToList('Donut',2.50)">Donut</BUTTON>
-                $2.50
-            </td>
-            <td>
-                <BUTTON onclick="addToList('Bagel',2.00)">Bagel</BUTTON>
-                $2.00
-            </td>
-        </tr>
-        <br><br>
-        <tr>
-            <td>
-                <BUTTON onclick="removeLastItem()">Remove Last Item</BUTTON>
-            </td>
-            <td>
-                <a href="checkOut"><BUTTON id = "checkOut" name = "checkOut" onclick="return checkOut()">Check Out</BUTTON></a>
-            </td>
-        </tr>
-        <br><br>
+        <c:if test="${isMod == true}">
+            <a href="addItems"><button>Add Items</button></a>
+        </c:if>
 
     </fieldset>
 </section>
@@ -79,6 +64,6 @@
 <p id="totalPrice"></p>
 
 
-<script src="resources/shoppingHelper.js"></script>
+<script src="webapp/resources/shoppingHelper.js"></script>
 </body>
 </html>

@@ -1,7 +1,5 @@
 package com.test.POJOs;
 
-import java.util.Arrays;
-
 /**
  * Created by user on 7/21/2017.
  */
