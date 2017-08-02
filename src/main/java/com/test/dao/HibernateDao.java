@@ -173,7 +173,6 @@ public class HibernateDao implements userDao {
                     return user;
                 } else {
                     msg = "Wrong Password!";
-
                 }
             }
         }

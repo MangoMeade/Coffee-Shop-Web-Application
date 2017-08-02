@@ -3,6 +3,7 @@ package com.test.controller;
 import com.test.POJOs.ItemsEntity;
 import com.test.POJOs.User;
 import com.test.dao.userDao;
+import com.test.encyption.CryptWithMD5;
 import com.test.factory.DaoFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +44,8 @@ public class HomeController {
                 return new ModelAndView("registration", "msg", "User name has been taken!");
             }
         }
+        user.setPassword(CryptWithMD5.cryptWithMD5(user.getPassword()));
+        user.setIsAdmin(false);
         dao.addUser(user);
         loggedInUser = user;
         return maybeLogIn(model);
@@ -60,6 +63,7 @@ public class HomeController {
     public ModelAndView loginUser(User user, Model model) {
 
         System.out.println(user);
+        user.setPassword(CryptWithMD5.cryptWithMD5(user.getPassword()));
         loggedInUser = dao.getUser(user.getUserName(), user.getPassword());
         return maybeLogIn(model);
     }

@@ -104,6 +104,7 @@
                 <strong>Step 4: Create Username</strong>
             </legend>
             <table>
+                ${msg}
                 <tr>
                     <td>Username:</td>
                     <td><input type="text" name="userName" id="userName" size="30" tabindex="14" placeholder="userName"
